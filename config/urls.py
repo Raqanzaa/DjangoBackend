@@ -29,5 +29,5 @@ urlpatterns = [
     path('api/savings/', include('apps.savings.urls')),
     path('api/investments/', include('apps.investments.urls')),
     path('auth/', include('social_django.urls', namespace='social')),
-    path('oauth/callback/', google_oauth_callback, name='google_oauth_callback'),
+    path('oauth-callback/', google_oauth_callback, name='google_oauth_callback'),
 ]
