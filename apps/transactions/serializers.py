@@ -1,20 +1,26 @@
 from rest_framework import serializers
-from .models import Category, Account, Transaction
+from .models import Category, Transaction
+
 
 class CategorySerializer(serializers.ModelSerializer):
     class Meta:
         model = Category
-        fields = '__all__'
-
-class AccountSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Account
-        fields = '__all__'
+        fields = ['id', 'name', 'type', 'color', 'icon', 'parent']
 
 class TransactionSerializer(serializers.ModelSerializer):
-    category_name = serializers.CharField(source='category.name', read_only=True)
-    account_name = serializers.CharField(source='account.name', read_only=True)
-    
+    category = CategorySerializer(read_only=True)
+    category_id = serializers.PrimaryKeyRelatedField(
+        queryset=Category.objects.all(),
+        source='category',
+        write_only=True,
+        required=False,
+        allow_null=True
+    )
+
     class Meta:
         model = Transaction
-        fields = '__all__'
+        fields = [
+            'id', 'type', 'amount', 'description',
+            'date', 'category', 'category_id',
+            'created_at', 'updated_at'
+        ]

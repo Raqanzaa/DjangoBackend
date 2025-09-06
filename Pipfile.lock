@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "a6a91288a10c212ac7252910e4eef1fa961a33ea8d6fd693d62c0a7d4f5a3335"
+            "sha256": "a187e3ec8d684524b955d8945dcc13c11c7a250d64689bb3d972ada2bd88d03d"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -244,6 +244,14 @@
             "markers": "python_version >= '2.7' and python_version not in '3.0, 3.1, 3.2, 3.3, 3.4'",
             "version": "==0.7.1"
         },
+        "dj-rest-auth": {
+            "hashes": [
+                "sha256:3f8c744cbcf05355ff4bcbef0c8a63645da38e29a0fdef3c3332d4aced52fb90"
+            ],
+            "index": "pypi",
+            "markers": "python_version >= '3.8'",
+            "version": "==7.0.1"
+        },
         "django": {
             "hashes": [
                 "sha256:0745b25681b129a77aae3d4f6549b62d3913d74407831abaa0d9021a03954bae",
@@ -252,6 +260,14 @@
             "index": "pypi",
             "markers": "python_version >= '3.10'",
             "version": "==5.2.5"
+        },
+        "django-allauth": {
+            "hashes": [
+                "sha256:e95d5234cccaf92273d315e1393cc4626cb88a19d66a1bf0e81f89f7958cfa06"
+            ],
+            "index": "pypi",
+            "markers": "python_version >= '3.8'",
+            "version": "==65.11.1"
         },
         "django-cors-headers": {
             "hashes": [

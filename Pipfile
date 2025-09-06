@@ -18,6 +18,8 @@ djangorestframework = "*"
 djangorestframework-simplejwt = "*"
 django-cors-headers = "*"
 social-auth-app-django = "*"
+dj-rest-auth = "*"
+django-allauth = "*"
 
 [dev-packages]
 

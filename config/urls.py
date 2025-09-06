@@ -17,17 +17,22 @@ Including another URLconf
 
 from django.contrib import admin
 from django.urls import path, include
-from apps.accounts.views import register_user, login_user, get_user_profile, google_oauth_callback
+from apps.accounts.views import (
+    register_user,
+    login_user,
+    get_user_profile,
+    google_oauth_callback,
+)
 from rest_framework_simplejwt.views import TokenRefreshView
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('api/auth/', include('apps.accounts.urls')),
-    path('api/transactions/', include('apps.transactions.urls')),
-    path('api/budgets/', include('apps.budgets.urls')),
-    path('api/goals/', include('apps.goals.urls')),
-    path('api/savings/', include('apps.savings.urls')),
-    path('api/investments/', include('apps.investments.urls')),
-    path('auth/', include('social_django.urls', namespace='social')),
-    path('oauth-callback/', google_oauth_callback, name='google_oauth_callback'),
+    path("admin/", admin.site.urls),
+    path("api/auth/", include("apps.accounts.urls")),
+    path("api/", include("apps.transactions.urls")),
+    path("api/budgets/", include("apps.budgets.urls")),
+    path("api/goals/", include("apps.goals.urls")),
+    path("api/savings/", include("apps.savings.urls")),
+    path("api/investments/", include("apps.investments.urls")),
+    path("auth/", include("social_django.urls", namespace="social")),
+    path("auth/google/callback/", google_oauth_callback, name="google_oauth_callback"),
 ]
