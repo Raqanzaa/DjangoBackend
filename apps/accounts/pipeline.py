@@ -18,3 +18,13 @@ def ensure_user_exists(backend, uid, user=None, *args, **kwargs):
         return {"user": existing_user}
     except CustomUser.DoesNotExist:
         raise PermissionDenied("This account is not registered. Please sign up first.")
+
+def save_profile_picture(backend, user, response, *args, **kwargs):
+    picture_url = None
+
+    if backend.name == "google-oauth2":
+        picture_url = response.get("picture")
+
+    if picture_url:
+        user.profile_picture = picture_url
+        user.save()

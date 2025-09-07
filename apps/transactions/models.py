@@ -9,8 +9,8 @@ class Category(models.Model):
 
     name = models.CharField(max_length=100)
     type = models.CharField(max_length=2, choices=CategoryType.choices)
-    color = models.CharField(max_length=7, default='#3B82F6')  # Hex color
-    icon = models.CharField(max_length=50, blank=True)
+    color = models.CharField(max_length=7, default='#3B82F6')
+    icon = models.CharField(max_length=10, default="📂")
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     parent = models.ForeignKey('self', on_delete=models.CASCADE, null=True, blank=True)
 

@@ -21,7 +21,30 @@ class TransactionViewSet(viewsets.ModelViewSet):
     permission_classes = [permissions.IsAuthenticated]
 
     def get_queryset(self):
-        return Transaction.objects.filter(user=self.request.user)
+        queryset = Transaction.objects.filter(user=self.request.user)
+        params = self.request.query_params
+
+        tx_type = params.get("type")
+        min_amount = params.get("minAmount")
+        max_amount = params.get("maxAmount")
+
+        if tx_type:
+            queryset = queryset.filter(type=tx_type)
+
+        if min_amount:
+            queryset = queryset.filter(amount__gte=min_amount)
+
+        if max_amount:
+            queryset = queryset.filter(amount__lte=max_amount)
+
+        return queryset
+    
+    def get_serializer_context(self):
+        """
+        Pass the request context to the serializer.
+        This is crucial for the security fix.
+        """
+        return {'request': self.request}
 
     def perform_create(self, serializer):
         serializer.save(user=self.request.user)
