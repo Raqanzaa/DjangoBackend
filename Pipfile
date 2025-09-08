@@ -20,6 +20,7 @@ django-cors-headers = "*"
 social-auth-app-django = "*"
 dj-rest-auth = "*"
 django-allauth = "*"
+pillow = "*"
 
 [dev-packages]
 
